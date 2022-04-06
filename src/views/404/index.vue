@@ -7,6 +7,6 @@
 <script>
 
 export default {
-  name: '404-demo',
+  name: 'page-error',
 }
 </script>

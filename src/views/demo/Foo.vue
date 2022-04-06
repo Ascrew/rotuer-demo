@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">page foo</div>    
+    <div class="box">page foo {{name }} {{ age }}</div>    
     <div class="router-view">
       <router-view></router-view>
     </div>
@@ -11,9 +11,23 @@
 
 export default {
   name: 'foo-demo',
-  beforeRouteUpdate(to, from) {
-    console.log('foo', to)
-    console.log('foo', from)
+  props: ['name', 'age'],
+  created() {
+    console.log('created in foo', this.id)
+  },
+  watch: {
+    $router: {
+      handler(val) {
+        console.log('lsiten router change in foo', val)
+      }
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped >
+.router-view {
+  padding: 20px;
+  border: 1px solid black;
+}
+</style>

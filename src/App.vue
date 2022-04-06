@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div class="link-list">
-      <router-link class="link__item" to="/foo">go to foo</router-link>
-      <router-link class="link__item" to="/foo/child">go to child</router-link>
+      <button @click="goToPage('foo')">fo to foo</button>
+      <button @click="goToPage('bar')">go to bar but redirect to child</button>
+      <!-- <router-link class="link__item" to="/foo">go to foo</router-link>
+      <router-link class="link__item" to="/foo/child">go to child</router-link> -->
     </div>
     <div class="line" style="margin: 10px 0;">-----------------------------------------------------------</div>
     <router-view></router-view>
@@ -15,6 +17,11 @@ export default {
   components: {},
   created() {
     console.log('listen router', this.$router)
+  },
+  methods: {
+    goToPage(path) {
+      this.$router.push({name: `${path}`, params:{userId: '123'}})
+    }
   },
   beforeRouteUpdate(to, from) {
     console.log('app', to)

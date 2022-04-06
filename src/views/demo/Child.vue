@@ -8,9 +8,13 @@
 
 export default {
   name: 'child-demo',
-  beforeRouteUpdate(to, from) {
-    console.log('child', to)
-    console.log('child', from)
+  created() {
+    console.log('created in child')
+  },
+  watch: {
+    $router(val) {
+      console.log('listen watch val in ', val)
+    }
   }
 }
 </script>
