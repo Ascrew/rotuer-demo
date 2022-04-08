@@ -2,12 +2,15 @@
   <div id="app">
     <div class="link-list">
       <button @click="goToPage('foo')">fo to foo</button>
-      <button @click="goToPage('bar')">go to bar but redirect to child</button>
+      <button @click="goToPage('bar')">go to bar</button>
+      <button @click="goToPage('child')">go to child</button>
       <!-- <router-link class="link__item" to="/foo">go to foo</router-link>
       <router-link class="link__item" to="/foo/child">go to child</router-link> -->
     </div>
     <div class="line" style="margin: 10px 0;">-----------------------------------------------------------</div>
-    <router-view></router-view>
+    <transition>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
