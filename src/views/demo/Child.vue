@@ -9,7 +9,7 @@
 export default {
   name: 'child-demo',
   created() {
-    console.log('created in child')
+    // console.log('created in child')
   },
   watch: {
     $router(val) {

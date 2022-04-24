@@ -1,34 +1,74 @@
 <template>
   <div id="app">
-    <div class="link-list">
-      <button @click="goToPage('foo')">fo to foo</button>
-      <button @click="goToPage('bar')">go to bar</button>
-      <button @click="goToPage('child')">go to child</button>
-      <!-- <router-link class="link__item" to="/foo">go to foo</router-link>
-      <router-link class="link__item" to="/foo/child">go to child</router-link> -->
+    <!-- <div class="link-list">
     </div>
     <div class="line" style="margin: 10px 0;">-----------------------------------------------------------</div>
     <transition>
       <router-view></router-view>
-    </transition>
+    </transition> -->
+    <!-- <div ref="test" class="test"></div> -->
+    <button @click="testMethod" type="text">test</button>
+    <bar ref="barRef" ></bar>
   </div>
 </template>
 
 <script>
+import Bar from './views/demo/Bar.vue';
 export default {
   name: "App",
-  components: {},
-  created() {
-    console.log('listen router', this.$router)
-  },
-  methods: {
-    goToPage(path) {
-      this.$router.push({name: `${path}`, params:{userId: '123'}})
+  components: {Bar},
+  provide() {
+    return {
+      name: this.acData
     }
   },
-  beforeRouteUpdate(to, from) {
-    console.log('app', to)
-    console.log('app', from)
+  data() {
+    return {
+      str: 'bb',
+      acData: {
+        name: 'zhangsan'
+      }
+    }
+  },
+
+  beforeCreate() {
+    console.log('listen status in beforeCreated --------------------')
+  },
+  created() {
+    console.log('listen status in created --------------------')
+  },
+  beforeMount() {
+    console.log('listen status in beforeMount --------------------')
+  },
+  mounted() {
+    console.log('listen status in mounted --------------------')
+    console.log(this)
+  },
+  beforeUpdate() {
+    console.log('listen status in beforeUpdate --------------------')
+  },
+  updated() {
+    console.log('listen status in updated --------------------')
+    console.log(this)
+  },
+  beforeDestroy() {
+    console.log('listen status in beforeUpdate --------------------')
+  },
+  destroyed() {
+    console.log('listen status in updated --------------------')
+  },
+  methods: {
+    testMethod() {
+      this.str = 'aaaa'
+      this.acData.name = 'zhaosi'
+    }
+  //   goToPage(path) {
+  //     this.$router.push({name: `${path}`, params:{userId: '123'}})
+  //   }
+  // },
+  // beforeRouteUpdate(to, from) {
+  //   console.log('app', to)
+  //   console.log('app', from)
   }
 };
 </script>

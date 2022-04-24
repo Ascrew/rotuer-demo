@@ -33,8 +33,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log('listen router TO before Each in router/indexjs => ', to)
-  console.log('listen router FROM before Each in router/indexjs => ', from)
+  // console.log('listen router TO before Each in router/indexjs => ', to)
+  // console.log('listen router FROM before Each in router/indexjs => ', from)
   next()
 })
 
